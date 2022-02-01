@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박기태씨 공부하세요</title>
+</head>
+<body>
+    <img src = "agumon.png"> 
+    <h1>뭐긴 뭐야 수능이지<br>꿈 아니야</h1>
+    <h2 id = "clock1" class="counter"></h2>
+    <h2 id = "clock2" class="counter"></h2>
+    <h2 id = "clock3" class="counter"></h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/xB3FBK9zArw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</body>
+
+<script>
+    const clock1 = document.querySelector("#clock1")
+    const clock2 = document.querySelector("#clock2")
+    const clock3 = document.querySelector("#clock3")
+
+    const date1 = new Date("2022-06-09T00:09:00+0900")
+    const date2 = new Date("2022-09-01T00:09:00+0900")
+    const date3 = new Date("2022-11-17T00:09:00+0900")
+
+
+
+
+    function printCounter(){
+        setCounter(date1,clock1,"6월 평가원 D-")
+        setCounter(date2,clock2,"9월 평가원 D-")
+        setCounter(date3,clock3,"수능!!!!!!!!!! D-") 
+    }    
+    
+    function setCounter(date,clock,str){
+        
+        const now = new Date()
+        const gap = date.getTime()  - now.getTime()
+        
+        const day = Math.floor(gap/(1000*60*60*24));
+        const hours = Math.floor((gap % (1000*60*60*24))/(1000*60*60));
+        const minutes = Math.floor((gap % (1000*60*60))/(1000*60));
+        const seconds = Math.floor((gap % (1000*60))/1000);          
+        clock.innerText = str +  `${day}일 ${hours}시간 ${minutes}분 ${seconds}초`
+    }
+
+    function init (){
+        printCounter()
+        setInterval(printCounter,1000);
+    }
+
+    init();
+
+</script>
+</html>
